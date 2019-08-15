@@ -27,12 +27,12 @@ public class TestView {
         view.printGreeting();
         String greeting = "Welcome to Bibliotecta. Your one-stop-shop for great book titles in Banglore\n";
 
-        assertThat(greeting, is(equalTo(os.toString())));
+        assertThat(os.toString(), is(equalTo(greeting)));
     }
 
     @Test
     public void testMenu(){
-        
+
     }
 
 

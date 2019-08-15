@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -31,9 +32,21 @@ public class TestView {
     }
 
     @Test
-    public void testMenu(){
+    public void testListofBooks(){
+//        List<Book> book = new ArrayList<>();
+//        books.add(new Book("1984", "George Orwell", 1947));
+//
+//
+//
+//
+//        assertThat("something", containsString("something"));
+//        String output = os.toString();
+//        String[] lines = output.split("\n");
+//        List<String> books = Arrays.asList(lines);
+//        assertThat(books, is(books));
+//
+//        assertThat(lines[0], is("something"));
 
     }
-
 
 }

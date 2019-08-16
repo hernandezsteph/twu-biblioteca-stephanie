@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.*;
@@ -22,34 +21,21 @@ public class ViewBiblioteca {
 
     public void printMenu() {
         printStream.println("MAIN MENU\n 1. List of Books \n 2. Checkout \n 3. Return Book \n 4. Quit");
-
-//        try {
-//            Integer action = Integer.parseInt(input.readLine());
-//            printStream.println(action);
-//           // selectOption(action);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
-//    public void selectOption(Integer select){
-//        switch(select){
-//            case 1:
-//                printStream.println("hello");
-//                listBooks();
-//                break;
-//            case 2:
-//                printStream.println("checkout");
-//                break;
-//        }
-//    }
-
     public void listBooks(List<Book> titles){
+        //printStream.println(String.format("%-20s%-18s%-1s", "TITLE", "AUTHOR", "YEAR"));
         for(Book book : titles){
             printStream.println(book.formatString());
         }
     }
 
-
-
+    public void printAvailableBooks(List<Book> titles){
+        printStream.println(String.format("%-20s%-18s%-10s%-1s", "TITLE", "AUTHOR", "YEAR", "ID"));
+        for(Book book : titles){
+            if(!book.isCheckedOut()){
+                printStream.println(book.formatString());
+            }
+        }
+    }
 }

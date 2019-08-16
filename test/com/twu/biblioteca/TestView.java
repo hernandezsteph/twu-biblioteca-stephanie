@@ -18,7 +18,7 @@ public class TestView {
     private ViewBiblioteca view;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         os = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(os);
         view = new ViewBiblioteca(ps);

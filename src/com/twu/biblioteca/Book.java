@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Book {
     private String title;
@@ -9,12 +10,16 @@ public class Book {
     private int id;
     private boolean isCheckedOut;
 
-    public Book(String title, String author, int year) {
+    public Book(String title, String author, int year,int id) {
         this.author = author;
         this.title = title;
         this.year = year;
-        this.id = 1; //TODO: SET RANDOM
+        this.id = id;
         isCheckedOut = false;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void checkedOut(){
@@ -46,7 +51,7 @@ public class Book {
 
     // TODO: replace format string to include id, why not always show id?
     public String formatWithID(){
-        return String.format("|| %-15s || %-15s || %-10s || %-1s", title, author, Integer.toString(year), Integer.toString(id));
+        return String.format("|| %-15s || %-15s || %-5s || %-1s", title, author, Integer.toString(year), Integer.toString(id));
     }
 
     @Override

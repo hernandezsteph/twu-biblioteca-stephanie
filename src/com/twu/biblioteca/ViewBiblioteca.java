@@ -24,7 +24,7 @@ public class ViewBiblioteca {
     }
 
     public void listBooks(List<Book> titles){
-        //printStream.println(String.format("%-20s%-18s%-1s", "TITLE", "AUTHOR", "YEAR"));
+        printStream.println(String.format("%-20s%-18s%-1s", "TITLE", "AUTHOR", "YEAR"));
         for(Book book : titles){
             printStream.println(book.formatString());
         }
@@ -34,7 +34,7 @@ public class ViewBiblioteca {
         printStream.println(String.format("%-20s%-18s%-10s%-1s", "TITLE", "AUTHOR", "YEAR", "ID"));
         for(Book book : titles){
             if(!book.isCheckedOut()){
-                printStream.println(book.formatString());
+                printStream.println(book.formatWithID());
             }
         }
     }

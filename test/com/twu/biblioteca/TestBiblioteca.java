@@ -29,21 +29,15 @@ public class TestBiblioteca {
     @Test
     public void listOfBooksInput(){
         // GIVEN
-        //PrintStream mockPrint = mock(PrintStream.class);
-        //app = new BibliotecaApp(mockPrint);
-        //app.insertBooks();
-        //view = new ViewBiblioteca(mockPrint);
         PrintStream ps = new PrintStream(os);
         ViewBiblioteca mockView = mock(ViewBiblioteca.class);
         app = new BibliotecaApp(ps,  mockView);
 
         List<Book> testBook = new ArrayList<>();
-        testBook.add(new Book("1984", "George Orwell", 1947));
-        testBook.add(new Book("Dracula", "Bram Stoker", 1897));
-        testBook.add(new Book("Oliver Twist", "Charles Dickens", 1880));
-        testBook.add(new Book("Frakenstein", "Mary Shelley", 1880));
-//        testBook.add(new Book("Test", "test", 2019));
-//        testBook.add(new Book("1984", "George Orwell", 1847));
+        testBook.add(new Book("1984", "George Orwell", 1947, 1));
+        testBook.add(new Book("Dracula", "Bram Stoker", 1897, 2));
+        testBook.add(new Book("Oliver Twist", "Charles Dickens", 1880,3 ));
+        testBook.add(new Book("Frakenstein", "Mary Shelley", 1880,4 ));
 
         // WHEN
         app.selectOption(1);

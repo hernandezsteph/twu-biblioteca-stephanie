@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.util.*;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -33,19 +34,22 @@ public class TestView {
 
     @Test
     public void testListofBooks(){
-//        List<Book> book = new ArrayList<>();
-//        books.add(new Book("1984", "George Orwell", 1947));
-//
-//
-//
-//
-//        assertThat("something", containsString("something"));
-//        String output = os.toString();
-//        String[] lines = output.split("\n");
-//        List<String> books = Arrays.asList(lines);
-//        assertThat(books, is(books));
-//
-//        assertThat(lines[0], is("something"));
+        Book a = new Book("Dracula", "Bram Stoker", 1897);
+        Book b = new Book("1984", "George Orwell", 1947);
+        List<String> titles = new ArrayList<>();
+        titles.add(b.formatString());
+        titles.add(a.formatString());
+
+        List<Book> formatTitles = new ArrayList<>();
+        formatTitles.add(new Book("1984", "George Orwell", 1947));
+        formatTitles.add(new Book("Dracula", "Bram Stoker", 1897));
+
+        view.listBooks(formatTitles);
+
+        String output = os.toString();
+        String[] lines = output.split("\n");
+        List<String> books = Arrays.asList(lines);
+        assertThat(books, is(titles));
 
     }
 

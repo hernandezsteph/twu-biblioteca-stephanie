@@ -12,7 +12,7 @@ public class Book {
     }
 
     public String formatString(){
-        return String.format("| %-10s | %-15s | %-10s\n", title, author, Integer.toString(year));
+        return String.format("|| %-15s || %-15s || %-1s", title, author, Integer.toString(year));
 
     }
 

@@ -17,7 +17,7 @@ public class TestBook {
     @Test
     public void testFormatString(){
         Book book = new Book("Dracula", "Bram Stoker", 1897);
-        String expected = String.format("| %-10s | %-15s | %-10s\n", "Dracula", "Bram Stoker", "1897");
+        String expected = String.format("|| %-15s || %-15s || %-1s\n", "Dracula", "Bram Stoker", "1897");
 
         assertThat(book.formatString(), is(expected));
     }

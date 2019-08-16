@@ -9,22 +9,12 @@ import java.util.*;
 public class ViewBiblioteca {
     private PrintStream printStream;
     private BufferedReader input;
-    private Map<String, String> books = new HashMap<String,String>();
 
     public ViewBiblioteca(PrintStream printStream){
         this.printStream = printStream;
 
         input = new BufferedReader(new InputStreamReader(System.in));
-        insertBooks();
     }
-
-    public void insertBooks(){
-        books.put("1984", "George Orwell");
-        books.put("Fahrenheit 451", "fjdk");
-        books.put("Oliver Twist", "Charles Dickens");
-        books.put("Pride and Prejudice", "Jane Austen");
-    }
-
 
     public void printGreeting(){
         printStream.println("Welcome to Bibliotecta. Your one-stop-shop for great book titles in Banglore");
@@ -36,27 +26,27 @@ public class ViewBiblioteca {
         try {
             Integer action = Integer.parseInt(input.readLine());
             printStream.println(action);
-            selectOption(action);
+           // selectOption(action);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void selectOption(Integer select){
-        switch(select){
-            case 1:
-                printStream.println("hello");
-                listBooks();
-                break;
-            case 2:
-                printStream.println("checkout");
-                break;
-        }
-    }
+//    public void selectOption(Integer select){
+//        switch(select){
+//            case 1:
+//                printStream.println("hello");
+//                listBooks();
+//                break;
+//            case 2:
+//                printStream.println("checkout");
+//                break;
+//        }
+//    }
 
-    public void listBooks(){
-        for(String title : books.keySet()){
-            printStream.println(title);
+    public void listBooks(List<Book> titles){
+        for(Book book : titles){
+            printStream.println(book.formatString());
         }
     }
 

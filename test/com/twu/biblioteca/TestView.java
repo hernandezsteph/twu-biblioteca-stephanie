@@ -33,6 +33,14 @@ public class TestView {
     }
 
     @Test
+    public void testMenu(){
+        view.printMenu();
+        String menu = "MAIN MENU\n 1. List of Books \n 2. Checkout \n 3. Return Book \n 4. Quit\n";
+
+        assertThat(os.toString(), is(equalTo(menu)));
+    }
+
+    @Test
     public void testListofBooks(){
         Book a = new Book("Dracula", "Bram Stoker", 1897);
         Book b = new Book("1984", "George Orwell", 1947);

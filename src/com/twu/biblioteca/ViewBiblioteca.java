@@ -21,15 +21,15 @@ public class ViewBiblioteca {
     }
 
     public void printMenu() {
-        printStream.println("MAIN MENU\n 1. List of Books \n 2. Checkout \n 3. Return Book \n 4. Quit\n");
+        printStream.println("MAIN MENU\n 1. List of Books \n 2. Checkout \n 3. Return Book \n 4. Quit");
 
-        try {
-            Integer action = Integer.parseInt(input.readLine());
-            printStream.println(action);
-           // selectOption(action);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Integer action = Integer.parseInt(input.readLine());
+//            printStream.println(action);
+//           // selectOption(action);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 //    public void selectOption(Integer select){

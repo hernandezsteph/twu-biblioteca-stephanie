@@ -38,7 +38,7 @@ public class BibliotecaApp {
             selectOption(action);
         }
     }
-
+    //TODO: FIX TO HANDLE STRING INPUTS 
     public Integer getInput(){
         try {
             return Integer.parseInt(input.readLine());
@@ -52,12 +52,15 @@ public class BibliotecaApp {
         switch(select){
             case 1:
                 view.listBooks(books);
+                view.printMenu();
                 break;
             case 2:
                 checkOutBook();
+                view.printMenu();
                 break;
             case 3:
-                printStream.println("return book");
+                returnBook();
+                view.printMenu();
                 break;
             case 4:
                 printStream.println("Goodbye! You are now exiting the Biblioteca.");
@@ -65,6 +68,7 @@ public class BibliotecaApp {
                 break;
             default:
                 printStream.println("Please select a valid option");
+                view.printMenu();
                 break;
         }
     }
@@ -75,22 +79,38 @@ public class BibliotecaApp {
 
         Integer selectedBook = getInput();
         Book checkOut = getBook(selectedBook);
-        if(checkOut == null){
+        if(checkOut == null || checkOut.isCheckedOut()){
             printStream.println("Please select a valid book.");
             checkOutBook();
         }
-        else {
+        else if(!checkOut.isCheckedOut()){
             checkOut.checkedOut();
             printStream.println("Thank you! Enjoy the book!");
             System.out.println(checkOut.toString());
         }
+    }
 
+    public void returnBook(){
+        printStream.println("Whick book would you like to return?\nEnter ID of selected book.");
+        view.listBooks(books);
+
+        Integer selectedBook = getInput();
+        Book returnedBook = getBook(selectedBook);
+
+        if(returnedBook == null || !returnedBook.isCheckedOut()){
+            printStream.println("Please return a valid book");
+            returnBook();
+        }
+        else if(returnedBook.isCheckedOut()){
+            returnedBook.returnBook();
+            printStream.println("Thank you for returning the book!");
+        }
     }
 
     public Book getBook(int id){
         Book found = null;
         for(Book title : books){
-            if(title.getId() == id && !title.isCheckedOut()){
+            if(title.getId() == id){
                 found = title;
             }
         }

@@ -26,13 +26,15 @@ public class Book {
         isCheckedOut = true;
     }
 
+    public void returnBook(){ isCheckedOut = false; }
+
     public boolean isCheckedOut(){
         return isCheckedOut;
     }
 
-    public String formatString(){
-        return String.format("|| %-15s || %-15s || %-1s", title, author, Integer.toString(year));
-    }
+//    public String formatString(){
+//        return String.format("|| %-15s || %-15s || %-1s", title, author, Integer.toString(year));
+//    }
 
     @Override
     public boolean equals(Object o) {

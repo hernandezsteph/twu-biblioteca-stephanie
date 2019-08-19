@@ -15,12 +15,12 @@ public class TestBook {
         assertThat(book.toString(), is(expected));
     }
 
-//    @Test
-//    public void testFormatString(){
-//        Book book = new Book("Dracula", "Bram Stoker", 1897, 2);
-//        String expected = String.format("|| %-15s || %-15s || %-1s", "Dracula", "Bram Stoker", "1897");
-//
-//        assertThat(book.formatString(), is(expected));
-//    }
+    @Test
+    public void testFormatString(){
+        Book book = new Book("Dracula", "Bram Stoker", 1897, 2);
+        String expected = String.format("|| %-15s || %-15s || %-5s || %-1s", "Dracula", "Bram Stoker", "1897", "2");
+
+        assertThat(book.formatWithID(), is(expected));
+    }
 
 }

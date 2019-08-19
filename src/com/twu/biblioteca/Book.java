@@ -26,15 +26,15 @@ public class Book {
         isCheckedOut = true;
     }
 
-    public void returnBook(){ isCheckedOut = false; }
+    public void returnBook() { isCheckedOut = false; }
 
     public boolean isCheckedOut(){
         return isCheckedOut;
     }
 
-//    public String formatString(){
-//        return String.format("|| %-15s || %-15s || %-1s", title, author, Integer.toString(year));
-//    }
+    public String formatWithID(){
+        return String.format("|| %-15s || %-15s || %-5s || %-1s", title, author, Integer.toString(year), Integer.toString(id));
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -49,11 +49,6 @@ public class Book {
     @Override
     public int hashCode() {
         return Objects.hash(title, author, year);
-    }
-
-    // TODO: replace format string to include id, why not always show id?
-    public String formatWithID(){
-        return String.format("|| %-15s || %-15s || %-5s || %-1s", title, author, Integer.toString(year), Integer.toString(id));
     }
 
     @Override

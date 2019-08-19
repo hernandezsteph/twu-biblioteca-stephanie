@@ -15,7 +15,7 @@ public class BibliotecaApp {
     public BibliotecaApp(PrintStream printStream){
         this.printStream = printStream;
         view = new ViewBiblioteca(printStream);
-        input = new BufferedReader(new InputStreamReader(System.in));
+        //input = new BufferedReader(new InputStreamReader(System.in));
         books = new ArrayList<>();
         insertBooks();
     }
@@ -23,9 +23,13 @@ public class BibliotecaApp {
     /*
         test purposes ONLY
      */
-    public BibliotecaApp(PrintStream printStream, ViewBiblioteca viewBiblioteca) {
-        this(printStream);
+    public BibliotecaApp(PrintStream printStream, ViewBiblioteca viewBiblioteca, BufferedReader reader) {
+        //this(printStream);
+        this.printStream = printStream;
         this.view = viewBiblioteca;
+        this.input = reader;
+        books = new ArrayList<>();
+        insertBooks();
 
     }
 
@@ -38,10 +42,11 @@ public class BibliotecaApp {
             selectOption(action);
         }
     }
-    //TODO: FIX TO HANDLE STRING INPUTS 
+    //TODO: FIX TO HANDLE STRING INPUTS
     public Integer getInput(){
         try {
-            return Integer.parseInt(input.readLine());
+            String line = input.readLine();
+            return Integer.parseInt(line);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -118,7 +123,7 @@ public class BibliotecaApp {
     }
 
     public void insertBooks(){
-        System.out.println("creating books");
+        //System.out.println("creating books");
         books.add(new Book("1984", "George Orwell", 1947,1 ));
         books.add(new Book("Dracula", "Bram Stoker", 1897,2 ));
         books.add(new Book("Oliver Twist", "Charles Dickens", 1880,3 ));

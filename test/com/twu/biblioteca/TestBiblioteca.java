@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import javax.swing.text.View;
 import java.io.*;
@@ -16,22 +17,27 @@ import static org.mockito.Mockito.*;
 public class TestBiblioteca {
     private OutputStream os;
     private BibliotecaApp app;
-    //private ViewBiblioteca view;
+    private PrintStream ps;
+    private ViewBiblioteca view;
 
     @Before
     public void setUp(){
         os = new ByteArrayOutputStream();
-        //PrintStream ps = new PrintStream(os);
+        ps = new PrintStream(os);
         //app = new BibliotecaApp(ps);
-        //view = new ViewBiblioteca(ps);
+        view = new ViewBiblioteca(ps);
+    }
+
+    @Test
+    public void getInput(){
+
     }
 
     @Test
     public void listOfBooksInput(){
         // GIVEN
-        PrintStream ps = new PrintStream(os);
         ViewBiblioteca mockView = mock(ViewBiblioteca.class);
-        app = new BibliotecaApp(ps,  mockView);
+        app = new BibliotecaApp(ps, mockView, new BufferedReader(new InputStreamReader(System.in)));
 
         List<Book> testBook = new ArrayList<>();
         testBook.add(new Book("1984", "George Orwell", 1947, 1));
@@ -44,6 +50,56 @@ public class TestBiblioteca {
 
         //THEN
         verify(mockView).listBooks(testBook);
+    }
+
+    @Test
+    public void checkOutBook() throws IOException {
+        //GIVEN
+        //PrintStream mockPS = mock(PrintStream.class);
+        BufferedReader mockReader = mock(BufferedReader.class);
+        //when(mockReader.readLine()).thenReturn("2");
+
+       // app = new BibliotecaApp(ps, view, mockReader);
+       // app = mock(BibliotecaApp.class);
+        //Mockito.doReturn(1).when(app).getInput();
+        app = Mockito.spy(new BibliotecaApp(ps, view, mockReader));
+        Mockito.doReturn(1).when(app).getInput();
+
+        //WHEN
+        app.selectOption(2);
+        //when(mockReader.readLine()).thenReturn("2");
+        // when(mockReader.readLine()).thenReturn("1");
+       // when(app.getInput()).thenReturn(1);
+
+        //THEN
+        verify(app).checkOutBook();
+    }
+
+//    @Test
+//    public void returnBook(){
+//        // TODO: MAKE SURE A BOOK IS CHECKED OUT
+//        BufferedReader mockReader = mock(BufferedReader.class);
+//
+//        app = Mockito.spy(new BibliotecaApp(ps, view, mockReader));
+//        Mockito.doReturn(1).when(app).getInput();
+//
+//        app.selectOption(3);
+//
+//        verify(app).returnBook();
+//
+//    }
+
+    @Test
+    public void invalidInput(){
+        ViewBiblioteca mockView = mock(ViewBiblioteca.class);
+        app = new BibliotecaApp(ps, mockView, new BufferedReader(new InputStreamReader(System.in)));
+
+        // WHEN
+        app.selectOption(5);
+
+        //THEN
+        assertThat(os.toString(),is(equalTo("Please select a valid option\n")));
+        verify(mockView).printMenu();
     }
 }
 
